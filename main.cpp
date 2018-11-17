@@ -67,7 +67,7 @@ public:
                 return static_cast<void*>(data_.data() + non_const_chunk->first_index);
             }
             else if (bytes_wanted == 0)
-                throw;
+                throw; //Can allocate no less than 1 byte
             else{
                 TableEntry entry = *chunk;
                 auto non_const_chunk = entries_.erase(chunk);
@@ -79,7 +79,7 @@ public:
             }
         }
         else{
-            throw;
+            throw; //No memory for your chunk
         }
     }
 
@@ -113,8 +113,7 @@ public:
             }
         }
         else{
-            //Такого указателя нет
-            throw;
+            throw; //Memory for this pointer has not been allocated
         }
     }
 
