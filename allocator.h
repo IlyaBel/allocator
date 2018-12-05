@@ -1,41 +1,13 @@
 #ifndef ALLOCATOR_H
 #define ALLOCATOR_H
 
+#include "storage_manager.h"
 #include <iostream>
 #include <memory>
-#include <list>
-#include <algorithm>
-#include <vector>
-#include <iterator>
-#include <cassert>
 
 #define USE_COUT \
     using std::cout; \
     using std::endl;
-
-struct TableEntry{
-    size_t first_index;
-    size_t size;
-    bool is_free;
-};
-
-class StorageManager{
-private:
-    std::list<TableEntry> entries_;
-    std::vector<unsigned char> data_;
-    const size_t size_;
-
-    auto findChunkBySize(size_t no_less_than) const;
-
-    auto findChunkByFirstIndex(size_t first_index) const;
-
-public:
-    StorageManager(size_t size);
-
-    void* Allocate(size_t bytes_wanted);
-
-    void Free(void *ptr);
-};
 
 template<class T>
 class MyAllocator{

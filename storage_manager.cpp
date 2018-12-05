@@ -1,10 +1,6 @@
-#include "allocator.h"
+#include "storage_manager.h"
 #include <iostream>
-#include <memory>
-#include <list>
 #include <algorithm>
-#include <vector>
-#include <iterator>
 #include <cassert>
 
 using std::cout;
